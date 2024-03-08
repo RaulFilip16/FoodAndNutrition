@@ -18,4 +18,12 @@ class Migration(migrations.Migration):
                 ('age', models.IntegerField()),
             ],
         ),
+        # migrations.CreateModel(
+        #     name='Dish',
+        #     fields=[
+        #         ('idFoodType',models.BigAutoField(auto_created=True, primary_key=True,serialize=False, verbose_name='Dish')),
+        #         ('name', models.CharField(max_length=30)),
+        #         # ('')
+        #     ]
+        # )
     ]
