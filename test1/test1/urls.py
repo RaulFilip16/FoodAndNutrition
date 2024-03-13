@@ -20,8 +20,8 @@ from app.views import * #tots els metodes de la classe/fitxer views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludo/', saludo),
     path('web/', get_website),
-    path('hello/', hello_world),
     path('students/', get_students),
+    path('home/', home),
+    
 ]

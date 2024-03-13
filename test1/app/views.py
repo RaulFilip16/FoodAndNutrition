@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import Student
-import datetime as dt
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 # Create your views here.
-def hello_world(request):
-    return HttpResponse("Hello world!")
 
 def get_students(request):
     students = Student.objects.all()
@@ -15,5 +15,6 @@ def get_students(request):
 def get_website(request):
     return render(request, 'test.html')
 
-def saludo(request):
-    return HttpResponse("Hola como estas?")
+
+def home(request):
+    return render(request, 'home.html')
