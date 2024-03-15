@@ -15,13 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from app.views import * #tots els metodes de la classe/fitxer views
+from django.urls import path, include
+from django.contrib.auth import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('web/', get_website),
-    path('students/', get_students),
-    path('home/', home),
     
+    # aixo serveix per a les urls, definides a cada app corresponent puguin ser executades, i tenen el path en blanc per a no tenir que escriure la URL sencer nomApp/nomMetode app/students accounts/login
+    path('', include('app.urls')),
+    path('', include('accounts.urls'))
+
+    # path('accounts/login/', views.LoginView.as_view(), name='login'),
+    # path('accounts/logout/', views.LogoutView.as_view(), name='logout'),
+
 ]

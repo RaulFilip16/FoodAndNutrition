@@ -12,9 +12,8 @@ def get_students(request):
     student_values = list(students.values())
     return JsonResponse(student_values, safe=False)
 
-def get_website(request):
-    return render(request, 'test.html')
-
+def get_barradenavegacion(request):
+    return render(request, 'barra_navegacion.html')
 
 def home(request):
     return render(request, 'home.html')

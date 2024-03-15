@@ -1,0 +1,34 @@
+{% comment %} {% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LOG IN{% endblock%}</title>
+</head>
+<body>
+    <form action="" method="post">
+
+        {% csrf_token %}
+
+        {{form}}
+
+        <button type="submit" class="btn btn-succes">SIGN UP</button>
+
+    </form>
+</body>
+</html> {% endcomment %}
+
+{% extends base.html %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h2>Log In</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Log In</button>
+    </form>
+{% endblock %}
