@@ -15,5 +15,5 @@ def get_students(request):
 def get_barradenavegacion(request):
     return render(request, 'barra_navegacion.html')
 
-def home(request):
-    return render(request, 'home.html')
+def base(request):
+    return render(request, 'base.html')

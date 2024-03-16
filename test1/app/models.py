@@ -20,7 +20,8 @@ class Meal(models.Model):
     MEALS = [('Esmorzar','Esmorzar'),
              ('Dinar', 'Dinar'),
              ('Berenar', 'Berenar'),
-             ('Sopar', 'Sopar')]
+             ('Sopar', 'Sopar'),
+             ('Altres', 'Altres')]
     
     name = models.CharField(max_length=20, choices=MEALS, unique = True)
     time = models.TimeField()
