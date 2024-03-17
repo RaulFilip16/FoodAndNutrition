@@ -1,0 +1,72 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background: #FF0099;  /* fallback for old browsers */
+    background: linear-gradient(to bottom, #493240, #FF0099);
+    /* background: #FFE000;  
+    background: linear-gradient(to right, #799F0C, #FFE000); */
+}
+
+.row{
+    border-radius: 2rem;
+    border-width: 5px;
+    background:#fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    border-radius: 10px;
+}
+
+.polete{
+    display: flex;
+}
+
+img {
+    width: 600px;
+    height: 600px;
+}
+
+.col-md-6 img {
+    border-radius: 2rem; /* Aplica el mismo radio de borde que tienes en la fila */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor manteniendo su relación de aspecto */
+    width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+    height: 100%; /* Asegura que la imagen ocupe todo el alto disponible */
+}
+
+
+.form-control{
+    --bs-border-width: 3px;
+    
+}
+
+.btn-primary-login {
+    margin: auto;
+    display: inline-block;
+    font-weight: 500;
+    width: 10rem;
+    --bs-btn-color: rgb(255, 255, 255);
+    --bs-btn-bg: #007bff;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0056b3;
+}
+
+.btn-primary-signup {
+    margin: auto; 
+    display: inline-block;
+    font-weight: 500;
+    width: 10rem;
+    --bs-btn-color: rgb(255, 255, 255);
+    --bs-btn-bg: #28a745;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #218838;
+}

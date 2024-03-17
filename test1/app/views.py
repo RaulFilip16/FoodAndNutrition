@@ -17,3 +17,4 @@ def get_barradenavegacion(request):
 
 def base(request):
     return render(request, 'base.html')
+
