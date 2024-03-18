@@ -4,19 +4,25 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    --bs-body-color: #fff
 }
 
 body {
-    background: #FF0099;  /* fallback for old browsers */
-    background: linear-gradient(to bottom, #493240, #FF0099);
-    /* background: #FFE000;  
-    background: linear-gradient(to right, #799F0C, #FFE000); */
+    
+    /* background: #FF0099;  
+    background: linear-gradient(to bottom, #493240, #FF0099); */
+     /* background: #FFE000;  0575E6
+    background: linear-gradient(to right, #799F0C, #FFE000);  */
+    background: #00F260;  /* fallback for old browsers */
+
+background: linear-gradient(to right, #00F260, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
 }
 
 .row{
-    border-radius: 2rem;
-    border-width: 5px;
-    background:#fff;
+    --bs-border-style: none;    
 }
 
 .container {
@@ -29,25 +35,25 @@ body {
 
 .polete{
     display: flex;
+    margin-top: 30px;
 }
 
-img {
-    width: 600px;
-    height: 600px;
-}
+
+
 
 .col-md-6 img {
-    border-radius: 2rem; /* Aplica el mismo radio de borde que tienes en la fila */
-    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor manteniendo su relación de aspecto */
+    border-radius: 2rem;
     width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
     height: 100%; /* Asegura que la imagen ocupe todo el alto disponible */
 }
 
 
-.form-control{
-    --bs-border-width: 3px;
-    
-}
+/* per si vull el padding amb el fondo blanc */
+
+/* .p-1 {
+    padding: 1.5rem !important;
+} */
+
 
 .btn-primary-login {
     margin: auto;
@@ -55,9 +61,10 @@ img {
     font-weight: 500;
     width: 10rem;
     --bs-btn-color: rgb(255, 255, 255);
-    --bs-btn-bg: #007bff;
+    --bs-btn-bg: #43434300;
+    /* CCCCCC 007bff */
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0056b3;
+    --bs-btn-hover-bg: #2f2f2f;
 }
 
 .btn-primary-signup {
@@ -66,7 +73,7 @@ img {
     font-weight: 500;
     width: 10rem;
     --bs-btn-color: rgb(255, 255, 255);
-    --bs-btn-bg: #28a745;
+    --bs-btn-bg: #43434300;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #218838;
+    --bs-btn-hover-bg: #2f2f2f;
 }

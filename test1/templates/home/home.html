@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'home/home-styles.css' %}">
+{% endblock %}
+
+{% block content%}
+
+    {% include 'home/barra_de_navegacion.html' %}
+    <div class="container-fluid">
+        <h1>hola</h1>
+    </div>
+{%endblock%}

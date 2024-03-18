@@ -9,6 +9,9 @@ from django.contrib.auth import login
 def aut(request):
     return render(request, 'autentication.html')
 
+def home(request):
+    return render(request, 'home/home.html')
+
 class Registration(View):
     # el metodo GET sirve para mostrarnos el formulario, i SE ESTA mostrando  
     def get(self, request):
