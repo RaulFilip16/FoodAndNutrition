@@ -1,10 +1,49 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
 {% block title %}Sign Up{% endblock %}
 
-{% block content %}
-    <h2>Sign up</h2>
-    <form method="post">
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'accounts/styleSignUp.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %} 
+
+<div class="container-fluid title-img">
+    <div class="row">
+        <div class="col-md-6 image">
+            <img src="{% static 'assets/logoWhite.png' %}" alt="Imagen" class="img-fluid">
+        </div>
+        <div class="col-md-6 text d-flex align-items-center justify-content-center">
+            <h1>SIGN UP & REGISTRATION</h1>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="container-fluid form-button">
+    <form action="" method="post">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit">Sign Up</button>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="email" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="username" placeholder="User">
+            <label for="floatingUser">User</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+        
+        <button type="submit" class="btn btn-light">Sign Up</button>
     </form>
+    
+</div>
+
 {% endblock %}

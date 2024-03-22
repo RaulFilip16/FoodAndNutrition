@@ -14,8 +14,14 @@
     {% endblock %}
 </head>
 <body>
-    {% block content%}
-
-    {%endblock%}
+    <div id="header">
+        {% block header %}{% endblock %}
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}{% endblock %}
+    </div>
 </body>
 </html>

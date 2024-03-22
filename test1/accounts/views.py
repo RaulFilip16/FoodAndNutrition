@@ -1,33 +1,37 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views.generic import View, CreateView
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
 
 # Create your views here.
 
-def aut(request):
+def authentication(request):
     return render(request, 'autentication.html')
 
 def home(request):
     return render(request, 'home/home.html')
 
-class Registration(View):
-    # el metodo GET sirve para mostrarnos el formulario, i SE ESTA mostrando  
-    def get(self, request):
-        form = UserCreationForm()
-        return render(request, 'registration/login.html', {"form":form}) 
-    
-    # el metodo POST es el que gestiona el envio de informacion a traves del formulario, ES DECIR el usuario y la contraseña
-    def post(self, request):
-        form = UserCreationForm(request.POST)
-        # if form.is_valid():
-        user = form.save()
-        login(request, user)
-        return reverse_lazy('home.html')
-    
+def signup(request):
 
-class SignUpView(CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy("login") # Redirect to the login page after a successful registration
-    template_name = "registration/signup.html" # The template used to render the page
+    if request.method == 'GET':
+        return render(request, 'signup.html')
+    
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "User are already registrated. Please try again or log in with your account!")
+            return redirect('home')
+        
+        user = User.objects.create_user(username=username, password=password)
+        user.save()
+        messages.success(request, '¡Succesful registration!')
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+
+        return redirect('home')
+       
+    return render(request, 'signup.html')

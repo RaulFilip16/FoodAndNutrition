@@ -1,3 +1,19 @@
 .nav-pills{
-    padding: 3rem;;
+    padding: 2rem;;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+}
+
+.nav-pills img {
+    width: 40px;
+    
+}
+
+.nav-link, .nav-pills.active{
+    color: #036243;
+    --bs-nav-pills-link-active-bg: #036243;
+}
+
+.pestanyes li{
+    display: inline-flex;
 }

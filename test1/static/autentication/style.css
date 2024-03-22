@@ -38,8 +38,26 @@ background: linear-gradient(to right, #00F260, #0575E6); /* W3C, IE 10+/ Edge, F
     margin-top: 30px;
 }
 
+.bg-white,
+.form-control,
+input {
+    color: #000000; /* Cambiar el color del texto a negro */
+}
 
 
+
+.bg-white{
+    color:#000000;
+}
+
+.form-control{
+    color:#000000;
+}
+
+input{
+    color: #000000;
+    --bs-body-color: #000000;
+}
 
 .col-md-6 img {
     border-radius: 2rem;
@@ -59,7 +77,7 @@ background: linear-gradient(to right, #00F260, #0575E6); /* W3C, IE 10+/ Edge, F
     margin: auto;
     display: inline-block;
     font-weight: 500;
-    width: 10rem;
+    width: 15rem;
     --bs-btn-color: rgb(255, 255, 255);
     --bs-btn-bg: #43434300;
     /* CCCCCC 007bff */
@@ -69,9 +87,9 @@ background: linear-gradient(to right, #00F260, #0575E6); /* W3C, IE 10+/ Edge, F
 
 .btn-primary-signup {
     margin: auto; 
-    display: inline-block;
+    display: flex;
     font-weight: 500;
-    width: 10rem;
+    width: 15rem;
     --bs-btn-color: rgb(255, 255, 255);
     --bs-btn-bg: #43434300;
     --bs-btn-hover-color: #fff;

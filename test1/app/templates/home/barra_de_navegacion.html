@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%} Barra de Navegacion {%endblock%}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'home/styleBarra.css' %}">
+{% endblock %}
+
+{% block content%}
+
+
+
+<div class="nav nav-pills">
+    <div>
+        <img src="{% static 'assets/logoGreen.png' %}" alt="logo" >
+    </div>
+
+    
+
+
+    <div class="pestanyes">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="aboutUs.html">About Us</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="">Contact</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+    </div>
+
+    {% if request.user.is_athenticated %}
+        <li><a href="#">{{ request.user.username }}</a></li>
+    {% else %}
+        <li><a href="{% url 'autenticaton' %}">Login</a></li>
+    {% endif %}
+
+</div>
+  
+{%endblock%}
