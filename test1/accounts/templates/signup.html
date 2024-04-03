@@ -24,14 +24,23 @@
     </div>
 </div>
     
+
     
 <div class="container-fluid form-button d-flex justify-content-center align-items-center">
     <form action="" method="post">
         {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger custom-message" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="form-floating mb-3">
             <input type="text" class="form-control" name="username" placeholder="User">
             <label for="floatingUser">User</label>
         </div>
+        
         <div class="form-floating">
             <input type="password" class="form-control" name="password" placeholder="Password">
             <label for="floatingPassword">Password</label>

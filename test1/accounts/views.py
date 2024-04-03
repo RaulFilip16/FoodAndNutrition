@@ -23,11 +23,11 @@ def signup(request):
 
         if User.objects.filter(username=username).exists():
             messages.error(request, "User are already registrated. Please try again or log in with your account!")
-            return redirect('home')
+            return redirect('signup')
+            
         
         user = User.objects.create_user(username=username, password=password)
         user.save()
-        messages.success(request, '¡Succesful registration!')
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
@@ -37,7 +37,7 @@ def signup(request):
        
     return render(request, 'signup.html')
 
-def login_(request):
+def logIn(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
