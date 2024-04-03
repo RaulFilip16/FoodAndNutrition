@@ -16,12 +16,6 @@ body{
     color: #fff;
 }
 
-.form-button{
-    display: flex;
-    flex-direction: column; /* Para apilar los elementos verticalmente */
-    align-items: center; /* Para centrar los elementos horizontalmente */
-}
-
 .image{
     width: 10rem;
 }
@@ -34,9 +28,4 @@ body{
 
 .form-floating>.form-control{
     padding: 0.25rem 5rem;
-}
-
-.container-fluid.form-button {
-    display: ruby;
-    
 }
