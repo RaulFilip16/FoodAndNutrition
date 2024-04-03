@@ -32,10 +32,11 @@ body{
     color: #fff;
 }
 
-.btn.btn-light{
-    margin: 2rem;
-}
-
 .form-floating>.form-control{
     padding: 0.25rem 5rem;
+}
+
+.container-fluid.form-button {
+    display: ruby;
+    
 }
