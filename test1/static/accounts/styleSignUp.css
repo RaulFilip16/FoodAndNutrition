@@ -29,3 +29,8 @@ body{
 .form-floating>.form-control{
     padding: 0.25rem 5rem;
 }
+
+.button-container {
+    text-align: center;
+    padding-top: 1rem;
+}
