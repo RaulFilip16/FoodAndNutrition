@@ -17,8 +17,8 @@ def signup(request):
         return render(request, 'signup.html')
     
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
         if User.objects.filter(username=username).exists():
             messages.error(request, "User are already registrated. Please try again or log in with your account!")
@@ -28,10 +28,24 @@ def signup(request):
         user.save()
         messages.success(request, '¡Succesful registration!')
 
-        user = authenticate(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
 
         return redirect('home')
        
     return render(request, 'signup.html')
+
+def login_(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  
+        else:
+            messages.error(request, 'Usuario o contraseña incorrectos.')
+            return redirect('autentication')
+            # return render(request, 'login.html', {'error_message': True})
+    return render(request, 'autentication.html')

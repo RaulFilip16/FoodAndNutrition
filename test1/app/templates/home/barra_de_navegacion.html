@@ -17,9 +17,6 @@
         <img src="{% static 'assets/logoGreen.png' %}" alt="logo" >
     </div>
 
-    
-
-
     <div class="pestanyes">
         <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -35,11 +32,13 @@
         </li>
     </div>
 
-    {% if request.user.is_athenticated %}
-        <li><a href="#">{{ request.user.username }}</a></li>
-    {% else %}
-        <li><a href="{% url 'autenticaton' %}">Login</a></li>
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit"> {{ user.username }} Log Out</button>
+        </form>
     {% endif %}
+    
 
 </div>
   
