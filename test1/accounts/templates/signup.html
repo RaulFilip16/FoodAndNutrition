@@ -1,56 +1,46 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% load static %}
 
 {% block title %}Sign Up{% endblock %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'accounts/styleSignUp.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&display=swap" rel="stylesheet">
-{% endblock %}
-
-{% block content %} 
-
-<div class="container-fluid title-img">
-    <div class="row">
-        <div class="col-md-6 image">
-            <img src="{% static 'assets/logoWhite.png' %}" alt="Imagen" class="img-fluid">
-        </div>
-        <div class="col-md-6 text d-flex align-items-center justify-content-center">
-            <h1>SIGN UP & REGISTRATION</h1>
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-lg-3 col-md-5 col-sm-7"> <!-- Ajuste de tamaño de la columna -->
+            <div class="card border rounded shadow">
+                <div class="card-body p-4">
+                    <img src="{% static 'assets/logo.png' %}" alt="logo" class="img-fluid mx-auto d-block mb-4">
+                    <form id="signup-form" method="post" action="">
+                        {% csrf_token %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger custom-message" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="exampleInputUsername" class="form-label">User</label>
+                            <input type="text" class="form-control" id="exampleInputUsername" aria-describedby="usernameHelp" placeholder="Enter your username" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Enter your password" name="password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter your email" name="email">
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary btn-sm">Sign Up</button>
+                        </div>
+                    </form>
+                    <p class="text-center">Already have an account? <a href="{% url 'autentication' %}">Log In</a></p>
+                </div>
+            </div>
         </div>
     </div>
+    <img src="{% static 'assets/login1.jpg' %}" class="img-fluid" alt="Background Image" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4">
 </div>
-    
-
-    
-<div class="container-fluid form-button d-flex justify-content-center align-items-center">
-    <form action="" method="post">
-        {% csrf_token %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-danger custom-message" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="username" placeholder="User">
-            <label for="floatingUser">User</label>
-        </div>
-        
-        <div class="form-floating">
-            <input type="password" class="form-control" name="password" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
-        
-        <div class="button-container">
-            <button type="submit" class="btn btn-light">Sign Up</button>
-        </div>
-    </form>
-    
-</div>
-
 {% endblock %}
