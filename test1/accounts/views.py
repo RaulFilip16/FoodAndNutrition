@@ -7,7 +7,10 @@ from django.contrib.auth import logout
 # Create your views here.
 
 def authentication(request):
-    return render(request, 'autentication.html')
+    if request.method == 'GET':
+        return render(request, 'autentication.html')
+
+    
 
 def home(request):
     return render(request, 'home/home.html')
@@ -23,32 +26,35 @@ def signup(request):
 
         if User.objects.filter(username=username).exists():
             messages.error(request, "User are already registrated. Please try again or log in with your account!")
-            return redirect('home')
-        
+            return redirect('signup')
+               
         user = User.objects.create_user(username=username, password=password)
         user.save()
-        messages.success(request, '¡Succesful registration!')
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-
-        return redirect('home')
+            return redirect('home')
+        else:
+            messages.error(request, "Please introduce a valid user or password!")
+            return redirect('signup')
        
     return render(request, 'signup.html')
 
-def login_(request):
+def logIn(request):
+
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')  
-        else:
-            messages.error(request, 'Usuario o contraseña incorrectos.')
-            return redirect('autentication')
-            # return render(request, 'login.html', {'error_message': True})
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('home')  
+            else:
+                messages.error(request, 'Incorrect user or password!')
+                return redirect('autentication')
+                
     return render(request, 'autentication.html')
 
 def logOut(request):
