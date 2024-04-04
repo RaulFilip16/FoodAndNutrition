@@ -10,7 +10,6 @@ def authentication(request):
     if request.method == 'GET':
         return render(request, 'autentication.html')
 
-    
 
 def home(request):
     return render(request, 'home/home.html')
@@ -54,8 +53,7 @@ def logIn(request):
             else:
                 messages.error(request, 'Incorrect user or password!')
                 return redirect('autentication')
-                
-    return render(request, 'autentication.html')
+
 
 def logOut(request):
     logout(request)
