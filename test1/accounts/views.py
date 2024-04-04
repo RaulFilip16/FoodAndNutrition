@@ -53,6 +53,7 @@ def logIn(request):
                 return redirect('home')  
             else:
                 messages.error(request, 'Incorrect user or password!')
+                messages.error(request, 'Incorrect user or password!')
                 return redirect('autentication')
                 
     return render(request, 'autentication.html')
