@@ -1,24 +1,13 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'home/home-styles.css' %}">
-{% endblock %}
+{% block footer %}
 
-{% block header %}
-    {% include 'home/barra_de_navegacion.html' %}
-{% endblock %}
-
-
-{% block content %}
-    <div class="container-fluid">
-        <div class="tenor-gif-embed" data-postid="19636713" data-share-method="host" data-aspect-ratio="1.07744" data-width="100%">
-            <a href="https://tenor.com/view/workout-gym-funny-exercise-gif-19636713">Workout Gym GIF</a> from <a href="https://tenor.com/search/workout-gifs">Workout GIFs</a>
+ <div class=" w-100 min-vh-100 room-bg col-12 text-center d-flex "
+         style="background-image: url({% static 'assets/home.jpg' %}); background-repeat:no-repeat">
+        <div class="text-center endark align-items-center d-flex">
+            <p class="text-white h1  w-100 main-text-over-img">En Verde Bendito queremos que contar calorias no sea un problema del dia a dia </p>
         </div>
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    </div>
+ </div>
+
 {% endblock %}
-
-
-

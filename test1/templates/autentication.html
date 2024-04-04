@@ -2,44 +2,51 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row justify-content-center align-items-center" style="height: 100vh;">
-        <div class="col-lg-4 col-md-6 col-sm-8">
-            <div class="card border rounded shadow">
-                <div class="card-body p-4">
-                    <img src="{% static 'assets/logo.png' %}" alt="logo" class="img-fluid mx-auto d-block mb-4">
-                    <form id="login-form" method="post" action="{% url 'login'%}">
-                        {% csrf_token %}
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div class="alert alert-danger custom-message" role="alert">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        <div class="mb-3">
-                            <label for="exampleInputUsername" class="form-label">User</label>
-                            <input type="text" class="form-control" id="exampleInputUsername" aria-describedby="usernameHelp" placeholder="Enter your username" name="username">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Enter your password" name="password">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                        </div>
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-primary btn-sm btn-block">Log In</button>
-                        </div>
-                    </form>
-                    <p class="text-center">Don't have an account? <a href="{% url 'signup'%}">Sign Up</a></p>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-lg-3 col-md-5 col-sm-7"> <!-- Ajuste de tamaño de la columna -->
+                <div class="card border rounded shadow">
+                    <div class="card-body p-4">
+                        <img src="{% static 'assets/logo.png' %}" alt="logo" class="img-fluid mx-auto d-block mb-4">
+                        <form id="login-form" method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-danger custom-message" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="mb-3">
+                                <label for="exampleInputUsername" class="form-label">User</label>
+                                <input type="text" class="form-control" id="exampleInputUsername"
+                                       aria-describedby="usernameHelp" placeholder="Enter your username"
+                                       name="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword"
+                                       placeholder="Enter your password" name="password">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <button type="submit" class="btn btn-primary btn-sm">Log In</button>
+                            </div>
+
+                        </form>
+                        <p class="text-center">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+                    </div>
                 </div>
             </div>
         </div>
+        <img src="{% static 'assets/login1.jpg' %}" class="img-fluid" alt="Background Image"
+             style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4">
     </div>
-</div>
 {% endblock %}
+
 
 
 

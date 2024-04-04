@@ -15,7 +15,7 @@ class IngredientAdmin(admin.ModelAdmin):
     list_display=['id','name','weight','FoodType','nutrients']
 
 
-admin.site.register(Student)
+
 admin.site.register(Dish, DishAdmin)
 admin.site.register(Ingredients, IngredientAdmin)
 admin.site.register(Nutrient)
