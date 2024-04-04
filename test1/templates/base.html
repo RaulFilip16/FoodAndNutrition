@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +12,55 @@
     <!-- BOOTSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     {% block styles %}
+    <style>
+        /* Agregar estilos personalizados aquí si es necesario */
+    </style>
     {% endblock %}
-
 </head>
-
 <body>
+
     <div id="header">
-        {% block header %}{% endblock %}
+        {% block header %}
+
+        {% endblock %}
     </div>
+
     <div id="content">
-        {% block content %}{% endblock %}
+        {% block content %}
+            <div class="nav nav-pills">
+                <div>
+                    <img src="{% static 'assets/logoGreen.png' %}" alt="logo">
+                </div>
+
+                <div class="pestanyes">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutUs.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </div>
+
+                {% if user.is_authenticated %}
+                    <div class="supersuperfuturistic-button">
+                        <form id="logout-form" action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-futuristic btn-sm rounded-pill">
+                                <span class="text-visible">{{ user.username }} Log Out</span>
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        {% endblock %}
     </div>
+
     <div id="footer">
         {% block footer %}{% endblock %}
     </div>
