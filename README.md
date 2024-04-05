@@ -11,5 +11,5 @@ Projecte d'aplicació web per la pràctica 1 de l'assignatura projecte web.
 * **Pol Jaimejuan** - [Pol Jaimejuan Caubet](https://github.com/PolJaimejuanCaubet)
 
 #Running instructions
-Execute docker-compose.yml
-Put in the search bar http://127.0.0.1:8000/accounts/authentication/ 
+1.Execute docker-compose.yml
+2.Put in the search bar http://127.0.0.1:8000/accounts/authentication/ 
