@@ -12,3 +12,4 @@ Projecte d'aplicació web per la pràctica 1 de l'assignatura projecte web.
 
 #Running instructions
 Execute docker-compose.yml
+Put in the search bar http://127.0.0.1:8000/accounts/authentication/ 
