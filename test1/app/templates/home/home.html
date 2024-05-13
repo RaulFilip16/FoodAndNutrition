@@ -1,24 +1,15 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'home/home-styles.css' %}">
-{% endblock %}
+{% block footer %}
 
-{% block header %}
-    {% include 'home/barra_de_navegacion.html' %}
-{% endblock %}
-
-
-{% block content %}
-    <div class="container-fluid">
-        <div class="tenor-gif-embed" data-postid="19636713" data-share-method="host" data-aspect-ratio="1.07744" data-width="100%">
-            <a href="https://tenor.com/view/workout-gym-funny-exercise-gif-19636713">Workout Gym GIF</a> from <a href="https://tenor.com/search/workout-gifs">Workout GIFs</a>
-        </div>
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<div class="container-fluid p-0 position-relative">
+    <img src="{% static 'assets/home.jpg' %}" class="img-fluid w-100" alt="Background Image" style="height: 60vh; object-fit: cover;">
+    <div class="position-absolute bottom-0 start-0 p-3 text-white bg-dark" style="opacity: 0.9;">
+        <p class="h1">En Verde Bendito queremos que</p>
+        <p class="h1">contar calorías no sea un problema</p>
+        <p class="h1">del día a día</p>
     </div>
+</div>
+
 {% endblock %}
-
-
-

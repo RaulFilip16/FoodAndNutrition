@@ -2,9 +2,6 @@ from django.db import models
 
 
 # Create your models here.
-class Student(models.Model):
-    name = models.CharField(max_length=30, verbose_name="Nombre")
-    age = models.IntegerField(blank=True, null=True)
 
     # al definir aquest metode nomes li diem a la classe students que tot aquells Objectes Student els veguem pel seu nom es a dir en comptes de Student Object -> Pol
     def __str__(self):
@@ -16,6 +13,7 @@ class User(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=30)
     # age = models.IntegerField(null = True)
+=======
 
 
 class Meal(models.Model):
@@ -27,6 +25,7 @@ class Meal(models.Model):
 
     name = models.CharField(max_length=20, choices=MEALS, unique=True)
     time = models.TimeField()
+
 
     def __str__(self):
         return f"{self.name} | {self.time}"
