@@ -13,7 +13,6 @@ class User(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=30)
     # age = models.IntegerField(null = True)
-=======
 
 
 class Meal(models.Model):
