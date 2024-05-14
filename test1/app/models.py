@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -22,8 +24,8 @@ class Meal(models.Model):
 class Dish(models.Model):
     name = models.CharField(max_length=30)
     ingredients = models.ForeignKey('Ingredients', null=True, on_delete=models.CASCADE)
-    meal = models.ForeignKey(Meal, null=True, on_delete=models.CASCADE)
-
+    meal = models.ForeignKey('Meal', null=True, on_delete=models.CASCADE)
+    date = models.DateField(default=datetime.now)
     def __str__(self):
         return self.name
 
@@ -61,3 +63,4 @@ class Nutrient(models.Model):
 
     def __str__(self) -> str:
         return f"{self.calories} kcal | PROT: {self.protein} gr | CARB: {self.carbos} gr | GRAS: {self.grasa} gr | GRASsat: {self.grasaSAT} gr"
+
