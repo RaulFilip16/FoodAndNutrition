@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Barra de navegación -->
+    <div class="nav nav-pills">
+        <div>
+            <img src="{% static 'assets/logoGreen.png' %}" alt="logo">
+        </div>
+
+        <div class="pestanyes">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="aboutUs.html">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Contact</a>
+            </li>
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="supersuperfuturistic-button">
+                <form id="logout-form" action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-futuristic btn-sm rounded-pill">
+                        <span class="text-visible">{{ user.username }} Log Out</span>
+                    </button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+    <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Calendario</div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <a href="?date={{ previous_date|date:'Y-m-d' }}" class="btn btn-primary">&lt; Anterior</a>
+                            <h2>{{ current_date }}</h2>
+                            <a href="?date={{ next_date|date:'Y-m-d' }}" class="btn btn-primary">Siguiente &gt;</a>
+                        </div>
+                        <!-- Mostrar los platos para el día actual -->
+                        <h3 class="mb-3">Platos para el día {{ current_date }}</h3>
+                        <ul class="list-group">
+                            {% for plato in platos %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ plato.name }}
+                                    <div class="btn-group" role="group" aria-label="Actions">
+                                        <a href="{% url 'eliminar_plato' plato.id %}"
+                                           class="btn btn-danger">Eliminar</a>
+                                        <a href="{% url 'modificar_plato' plato.id %}"
+                                           class="btn btn-primary">Modificar</a>
+                                        <!-- Agregar enlace o botón para modificar el plato -->
+                                    </div>
+                                </li>
+                                {% empty %}
+                                <li class="list-group-item">No hay platos guardados para este día.</li>
+                            {% endfor %}
+                        </ul>
+                        <button id="openPopupBtn" class="btn btn-primary mt-3">Agregar Plato</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupForm" class="modal" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agregar Plato</h5>
+                    <button type="button" class="close" onclick="closePopup()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success mt-3">Agregar plato</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    <script>
+        function openPopup() {
+            document.getElementById("popupForm").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popupForm").style.display = "none";
+        }
+
+        document.getElementById("openPopupBtn").addEventListener("click", openPopup);
+        window.onclick = function (event) {
+            var popup = document.getElementById("popupForm");
+            if (event.target == popup) {
+                closePopup();
+            }
+        }
+    </script>
+{% endblock %}
+
