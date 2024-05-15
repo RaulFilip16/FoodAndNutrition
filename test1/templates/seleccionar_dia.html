@@ -38,9 +38,9 @@
                     <div class="card-header">Calendario</div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <a href="?date={{ previous_date|date:'Y-m-d' }}" class="btn btn-primary">&lt; Anterior</a>
-                            <h2>{{ current_date }}</h2>
-                            <a href="?date={{ next_date|date:'Y-m-d' }}" class="btn btn-primary">Siguiente &gt;</a>
+                            <a href="?date={{ previous_date|date:'Y-m-d' }}" class="btn btn-primary" style="background-color: #036243;">&lt; Anterior</a>
+                            <h2 style="text-decoration: underline; font-weight: bold;">{{ current_date }}</h2>
+                            <a href="?date={{ next_date|date:'Y-m-d' }}" class="btn btn-primary" style="background-color: #036243;">Siguiente &gt;</a>
                         </div>
                         <!-- Mostrar los platos para el día actual -->
                         <h3 class="mb-3">Platos para el día {{ current_date }}</h3>
@@ -52,7 +52,7 @@
                                         <a href="{% url 'eliminar_plato' plato.id %}"
                                            class="btn btn-danger">Eliminar</a>
                                         <a href="{% url 'modificar_plato' plato.id %}"
-                                           class="btn btn-primary">Modificar</a>
+                                           class="btn btn-primary" style="background-color: #036243;">Modificar</a>
                                         <!-- Agregar enlace o botón para modificar el plato -->
                                     </div>
                                 </li>
@@ -60,7 +60,7 @@
                                 <li class="list-group-item">No hay platos guardados para este día.</li>
                             {% endfor %}
                         </ul>
-                        <button id="openPopupBtn" class="btn btn-primary mt-3">Agregar Plato</button>
+                        <button id="openPopupBtn" class="btn btn-primary mt-3" style="background-color: #036243;">Agregar Plato</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Agregar Plato</h5>
-                    <button type="button" class="close" onclick="closePopup()">
+                    <button type="button" class="close" onclick="closePopup()" style="position: absolute; top: 10px; right: 10px;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -80,12 +80,13 @@
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-success mt-3">Agregar plato</button>
+                        <button type="submit" class="btn btn-success mt-3" style="background-color: #036243;">Agregar plato</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
     </body>
     <script>
         function openPopup() {
@@ -105,4 +106,3 @@
         }
     </script>
 {% endblock %}
-
