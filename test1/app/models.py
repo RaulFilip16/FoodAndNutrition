@@ -3,29 +3,27 @@ from datetime import datetime
 from django.db import models
 
 
-# Create your models here.
-
-
 class Meal(models.Model):
-    MEALS = [('Esmorzar', 'Esmorzar'),
-             ('Dinar', 'Dinar'),
-             ('Berenar', 'Berenar'),
-             ('Sopar', 'Sopar'),
-             ('Altres', 'Altres')]
+    MEALS = [
+        ('Esmorzar', 'Esmorzar'),
+        ('Dinar', 'Dinar'),
+        ('Berenar', 'Berenar'),
+        ('Sopar', 'Sopar'),
+        ('Altres', 'Altres')
+    ]
 
     name = models.CharField(max_length=20, choices=MEALS, unique=True)
-    time = models.TimeField()
-
 
     def __str__(self):
-        return f"{self.name} | {self.time}"
+        return self.name
 
 
 class Dish(models.Model):
     name = models.CharField(max_length=30)
     ingredients = models.ForeignKey('Ingredients', null=True, on_delete=models.CASCADE)
-    meal = models.ForeignKey('Meal', null=True, on_delete=models.CASCADE)
+    meal = models.ForeignKey(Meal, null=True, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.now)
+    grams = models.IntegerField(default=100)
     def __str__(self):
         return self.name
 
