@@ -17,7 +17,6 @@
 
     {% block styles %}
         <link rel="stylesheet" href="{% static 'home/styleBarra.css' %}">
-
     {% endblock %}
 </head>
 <body>
@@ -30,22 +29,22 @@
 
 <div id="content">
     {% block content %}
-        <div class="nav nav-pills">
+        <div class="nav nav-pills" style="background-color: white;">
         <div>
             <img src="{% static 'assets/logoGreen.png' %}" alt="logo">
         </div>
 
-        <div class="pestanyes">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="aboutUs.html">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">Contact</a>
-            </li>
-        </div>
+       <div class="pestanyes">
+    <li class="nav-item">
+        <a class="nav-link {% if request.path == '/home/' or request.path == '/' %}active{% endif %}" href="/home">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if request.path == '/aboutUs/' %}active{% endif %}" href="/aboutUs">About Us</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if request.path == '/contacto/' %}active{% endif %}" href="/contacto">Contact</a>
+    </li>
+</div>
 
         {% if user.is_authenticated %}
             <div class="supersuperfuturistic-button">
@@ -55,6 +54,12 @@
                         <span class="text-visible"> Log Out</span>
                     </button>
                 </form>
+            </div>
+        {% else %}
+            <div class="supersuperfuturistic-button">
+                <a href="{% url 'autentication' %}" class="btn btn-futuristic btn-sm rounded-pill">
+                    <span class="text-visible"> Log In</span>
+                </a>
             </div>
         {% endif %}
     {% endblock %}
