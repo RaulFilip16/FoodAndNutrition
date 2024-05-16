@@ -5,7 +5,7 @@ from .models import *
 
 class DishAdmin(admin.ModelAdmin):
      # en aquesta classe li podem indicar quins valors podem veure al superuser quan veiem cada objecte
-    list_display = ['id','name', 'ingredients','meal']
+    list_display = ['id','name', 'ingredients','meal','grams']
     #metode per a buscar o fer quaerys
     search_fields=("name","ingredients")
     #metode per a filtrar, basicament te pose al usuari el panel a la dreta per filtrar  

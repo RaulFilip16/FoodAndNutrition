@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Contacto {% endblock %}
+{% block footer %}
+
+    <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
+    <header class="full-width">
+        <div class="container text-center">
+            <div class="d-inline-block bg-white p-1 mt-2">
+                <p class="h1 text-dark main-text-over-img mt-1">Contacto</p>
+            </div>
+        </div>
+    </header>
+    </body>
+
+    <div class="container-fluid py-4 full-width">
+        <div class="row full-height">
+            <div class="col-md-6">
+                <div class="card bg-light mb-4 full-height">
+                    <div class="card-header">
+                        <h2>Preguntas Frecuentes (FAQ)</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="accordionFAQ">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h3 class="mb-0">
+                                    <span class="btn" data-toggle="collapse" data-target="#collapseOne"
+                                          aria-expanded="true" aria-controls="collapseOne">
+                                        ¿Qué son los macronutrientes y por qué son importantes?
+                                    </span>
+                                    </h3>
+                                </div>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                     data-parent="#accordionFAQ">
+                                    <div class="card-body">
+                                        Los macronutrientes son nutrientes esenciales que proporcionan energía y son
+                                        necesarios en grandes cantidades en la dieta. Los tres principales
+                                        macronutrientes son los carbohidratos, las proteínas y las grasas. Son
+                                        importantes para mantener la salud y el funcionamiento óptimo del cuerpo.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h3 class="mb-0">
+                                    <span class="btn" data-toggle="collapse" data-target="#collapseTwo"
+                                          aria-expanded="false" aria-controls="collapseTwo">
+                                        ¿Cómo puedo calcular mis necesidades diarias de macronutrientes?
+                                    </span>
+                                    </h3>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                     data-parent="#accordionFAQ">
+                                    <div class="card-body">
+                                        Las necesidades diarias de macronutrientes varían según el peso, la altura, el
+                                        nivel de actividad y los objetivos individuales. Puedes calcular tus necesidades
+                                        utilizando calculadoras en línea o consultando con un dietista o nutricionista.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h3 class="mb-0">
+                                    <span class="btn" data-toggle="collapse"
+                                          data-target="#collapseThree" aria-expanded="true"
+                                          aria-controls="collapseThree">
+                                        ¿Cuál es la diferencia entre los carbohidratos simples y complejos?
+                                    </span>
+                                    </h3>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                     data-parent="#accordionFAQ">
+                                    <div class="card-body">
+                                        Los carbohidratos simples son azúcares simples que se absorben rápidamente en el
+                                        cuerpo, como los que se encuentran en los dulces y refrescos. Los carbohidratos
+                                        complejos son cadenas más largas de azúcares que se descomponen más lentamente
+                                        en el cuerpo, como los que se encuentran en los granos enteros y las verduras.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h3 class="mb-0">
+                                    <span class="btn" data-toggle="collapse" data-target="#collapseFour"
+                                          aria-expanded="true" aria-controls="collapseFour">
+                                        ¿Cuánta proteína debo consumir para ganar músculo?
+                                    </span>
+                                    </h3>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                     data-parent="#accordionFAQ">
+                                    <div class="card-body">
+                                        La cantidad de proteína necesaria para ganar músculo varía según la edad, el
+                                        sexo, el nivel de actividad y los objetivos individuales. Se recomienda
+                                        generalmente consumir alrededor de 1.2 a 2.2 gramos de proteína por kilogramo de
+                                        peso corporal al día para aquellos que realizan entrenamiento de fuerza.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFive">
+                                    <h3 class="mb-0">
+                                    <span class="btn" data-toggle="collapse" data-target="#collapseFive"
+                                          aria-expanded="true" aria-controls="collapseFive">
+                                        ¿Cómo puedo controlar mi ingesta de macronutrientes?
+                                    </span>
+                                    </h3>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                     data-parent="#accordionFAQ">
+                                    <div class="card-body">
+                                        Puedes controlar tu ingesta de macronutrientes mediante el seguimiento de tu
+                                        consumo diario de alimentos utilizando aplicaciones móviles o herramientas en
+                                        línea. Estas herramientas te permiten ingresar los alimentos que consumes y te
+                                        proporcionan información detallada sobre tu ingesta de macronutrientes.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSix">
+                                    <h3 class="mb-0">
+                                    <span class="btn" data-toggle="collapse" data-target="#collapseSix"
+                                          aria-expanded="true" aria-controls="collapseSix">
+                                        ¿Es necesario contar los macronutrientes para mantener una dieta saludable?
+                                    </span>
+                                    </h3>
+                                </div>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                                     data-parent="#accordionFAQ">
+                                    <div class="card-body">
+                                        Contar los macronutrientes no es necesario para mantener una dieta saludable,
+                                        pero puede ser útil para aquellos que desean alcanzar objetivos específicos,
+                                        como perder peso o ganar masa muscular. Sin embargo, es importante enfocarse en
+                                        consumir una variedad de alimentos nutritivos y mantener un equilibrio adecuado
+                                        de carbohidratos, proteínas y grasas en la dieta.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSeven">
+                                    <h3 class="mb-0">
+                                    <span class="btn" data-toggle="collapse"
+                                          data-target="#collapseSeven" aria-expanded="true"
+                                          aria-controls="collapseSeven">
+                                        ¿Qué son los ácidos grasos omega-3 y por qué son importantes?
+                                    </span>
+                                    </h3>
+                                </div>
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+                                     data-parent="#accordionFAQ">
+                                    <div class="card-body">
+                                        Los ácidos grasos omega-3 son grasas poliinsaturadas que son esenciales para la
+                                        salud del corazón, el cerebro y las articulaciones. Se encuentran comúnmente en
+                                        pescados grasos como el salmón, las nueces y las semillas de lino. Consumir
+                                        suficientes ácidos grasos omega-3 puede ayudar a reducir el riesgo de
+                                        enfermedades cardiovasculares y promover la salud cerebral.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-light mb-4 full-height">
+                    <div class="card-header">
+                        <h2>Ubicación</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"
+                                    src=https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5966.332771652356!2d0.6216036759300964!3d41.608913571272566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a6e07273c3d6ef%3A0x250ae18af8fd555f!2sBiblioteca%20Jaume%20Porta.%20UdL!5e0!3m2!1ses!2ses!4v1715883438263!5m2!1ses!2ses"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 container-fluid m0">
+        <div class="row">
+            <div class="card bg-light mb-0 p-0">
+                <div class="card-header">
+                    <h2>Información de Contacto</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <p><strong>Teléfono:</strong> +31 696 969 696</p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <p><strong>Correo Electrónico:</strong> verdebendito@gmail.com</p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <p><strong>Ubicación:</strong> Av. Del Parais 7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.card').click(function () {
+                var $collapse = $(this).find('.collapse');
+                if ($collapse.hasClass('show')) {
+                    $collapse.collapse('hide');
+                } else {
+                    $('.collapse.show').collapse('hide');
+                    $collapse.collapse('show');
+                }
+            });
+            $('.card .card-body').click(function (event) {
+                event.stopPropagation();
+            });
+        });
+    </script>
+
+{% endblock %}
+

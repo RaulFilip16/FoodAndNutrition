@@ -1,44 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
+{% block footer %}
     <head>
-        <!-- Bootstrap CSS -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Bootstrap Bundle JS (incluye Popper) -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
-
-
-    <div class="nav nav-pills" style="background-color: white;">
-        <div>
-            <img src="{% static 'assets/logoGreen.png' %}" alt="logo">
-        </div>
-
-        <div class="pestanyes">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="aboutUs.html">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">Contact</a>
-            </li>
-        </div>
-
-        {% if user.is_authenticated %}
-            <div class="supersuperfuturistic-button">
-                <form id="logout-form" action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-futuristic btn-sm rounded-pill">
-                        <span class="text-visible"> Log Out</span>
-                    </button>
-                </form>
-            </div>
-        {% endif %}
-    </div>
 
     <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
     <div class="container mt-5">
@@ -54,7 +21,7 @@
                             <a href="?date={{ next_date|date:'Y-m-d' }}" class="btn btn-primary"
                                style="background-color: #036243;">Siguiente &gt;</a>
                         </div>
-                        <!-- Mostrar los platos para el día actual -->
+
                         <h3 class="mb-3">Platos para el día {{ current_date }}</h3>
                         <ul class="list-group">
                             {% for plato in platos %}
@@ -90,7 +57,7 @@
         </div>
     </div>
 
-    <!-- Modal para agregar plato -->
+
     <div class="modal fade" id="addPlatoModal" tabindex="-1" aria-labelledby="addPlatoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -109,7 +76,6 @@
         </div>
     </div>
 
-    <!-- Modal para eliminar plato -->
     <div class="modal fade" id="deletePlatoModal" tabindex="-1" aria-labelledby="deletePlatoModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -132,7 +98,7 @@
         </div>
     </div>
 
-    <!-- Modal para modificar plato -->
+
     <div class="modal fade" id="modifyPlatoModal" tabindex="-1" aria-labelledby="modifyPlatoModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -155,6 +121,18 @@
         </div>
     </div>
 
+    <div class="modal fade" id="macrosModal" tabindex="-1" aria-labelledby="macrosModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="macrosModalLabel">Macros</h5>
+                    <button type="button" class="btn-close"  aria-label="Close" onclick="cerrarModalMacros()"></button>
+                </div>
+                <div class="modal-body" id="macrosContent">
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var deletePlatoModal = document.getElementById('deletePlatoModal');
@@ -177,21 +155,6 @@
             });
         });
     </script>
-
-    <!-- Modal para mostrar los resultados de las macros -->
-    <div class="modal fade" id="macrosModal" tabindex="-1" aria-labelledby="macrosModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="macrosModalLabel">Macros</h5>
-                    <button type="button" class="btn-close" aria-label="Close" onclick="cerrarModalMacros()"></button>
-                </div>
-                <div class="modal-body" id="macrosContent">
-                    <!-- Aquí se insertarán los resultados de las macros -->
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         function verMacros(name, grams) {

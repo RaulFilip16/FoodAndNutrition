@@ -17,18 +17,7 @@ from .forms import DishForm
 #     return JsonResponse(student_values, safe=False)
 
 def home(request):  # cuan ya esta fet login o singup
-    return render(request, 'home/home.html', name='home')
-
-
-def home_noacc(request):
-    return render(request, 'menu.html')
-
-
-from datetime import datetime, timedelta
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-from .models import Dish
-from .forms import DishForm
+    return render(request, 'home/home.html')
 
 def seleccionar_dia(request):
     date_param = request.GET.get('date')
@@ -76,3 +65,8 @@ def seleccionar_dia(request):
         'next_date': next_date,
         'platos': platos,
     })
+
+def aboutUs(request):
+    return render(request, 'aboutUs.html')
+def contacto(request):
+    return render(request, 'contacto.html')
