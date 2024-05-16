@@ -8,7 +8,6 @@ urlpatterns = [
     path('', home_noacc),
     path('home/', home),
     path('seleccionar-dia/',seleccionar_dia, name='seleccionar_dia'),
-    path('eliminar-plato/<int:plato_id>/',eliminar_plato, name='eliminar_plato'),
-    path('modificar-plato/<int:plato_id>/', views.modificar_plato, name='modificar_plato'),
+
 
 ]
