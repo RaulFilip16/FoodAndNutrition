@@ -24,33 +24,11 @@
         <form id="logout-form" action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-futuristic btn-sm rounded-pill">
-                <span class="text-visible">{{ user.username }} Log Out</span>
+                <span class="text-visible"> Log Out</span>
             </button>
         </form>
     </div>
     {% endif %}
-</div>
-
-<div id="popupBackground" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); display: none;"></div>
-
-<div id="popupForm" class="modal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.9); padding: 20px; display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Plato</h5>
-                <button type="button" class="close" onclick="closePopup()" style="position: absolute; top: 10px; right: 10px;">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-success mt-3">Agregar plato</button>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 
 <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
@@ -72,31 +50,103 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{ plato.name }}
                             <div class="btn-group" role="group" aria-label="Actions">
-                                <a href="{% url 'eliminar_plato' plato.id %}" class="btn btn-danger">Eliminar</a>
-                                <a href="{% url 'modificar_plato' plato.id %}" class="btn btn-primary" style="background-color: #036243;">Modificar</a>
-                                <!-- Agregar enlace o botón para modificar el plato -->
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePlatoModal" data-plato-id="{{ plato.id }}" data-plato-name="{{ plato.name }}">Eliminar</button>
+                                <button class="btn btn-primary" style="background-color: #036243;" data-bs-toggle="modal" data-bs-target="#modifyPlatoModal" data-plato-id="{{ plato.id }}" data-plato-name="{{ plato.name }}">Modificar</button>
                             </div>
                         </li>
                         {% empty %}
                         <li class="list-group-item">No hay platos guardados para este día.</li>
                         {% endfor %}
                     </ul>
-                    <button id="openPopupBtn" class="btn btn-primary mt-3" onclick="openPopup()" style="background-color: #036243;">Agregar Plato</button>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addPlatoModal" style="background-color: #036243;">Agregar Plato</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    function openPopup() {
-        document.getElementById("popupBackground").style.display = "block";
-        document.getElementById("popupForm").style.display = "block";
-    }
+<!-- Modal para agregar plato -->
+<div class="modal fade" id="addPlatoModal" tabindex="-1" aria-labelledby="addPlatoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPlatoModalLabel">Agregar Plato</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'seleccionar_dia' %}?date={{ current_date }}">
+                    {% csrf_token %}
+                    {{ add_form.as_p }}
+                    <button type="submit" class="btn btn-success mt-3">Agregar plato</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-    function closePopup() {
-        document.getElementById("popupBackground").style.display = "none";
-        document.getElementById("popupForm").style.display = "none";
-    }
+<!-- Modal para eliminar plato -->
+<div class="modal fade" id="deletePlatoModal" tabindex="-1" aria-labelledby="deletePlatoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletePlatoModalLabel">Confirmar eliminación de plato</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="deletePlatoMessage"></p>
+                <form id="deletePlatoForm" method="post" action="{% url 'seleccionar_dia' %}?date={{ current_date }}">
+                    {% csrf_token %}
+                    <input type="hidden" id="deletePlatoId" name="plato_id" required>
+                    <button type="submit" class="btn btn-danger" name="delete">Confirmar eliminación</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para modificar plato -->
+<div class="modal fade" id="modifyPlatoModal" tabindex="-1" aria-labelledby="modifyPlatoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modifyPlatoModalLabel">Modificar Plato</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="modifyPlatoForm" method="post" action="{% url 'seleccionar_dia' %}?date={{ current_date }}">
+                    {% csrf_token %}
+                    <input type="hidden" id="modifyPlatoId" name="plato_id" required>
+                    {{ modify_form.as_p }}
+                    <button type="submit" class="btn btn-success mt-3" name="modify">Guardar Cambios</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var deletePlatoModal = document.getElementById('deletePlatoModal');
+        deletePlatoModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var platoId = button.getAttribute('data-plato-id');
+            var platoName = button.getAttribute('data-plato-name');
+            var deletePlatoId = document.getElementById('deletePlatoId');
+            var deletePlatoMessage = document.getElementById('deletePlatoMessage');
+            deletePlatoId.value = platoId;
+            deletePlatoMessage.textContent = '¿Estás seguro que deseas eliminar el plato "' + platoName + '"?';
+        });
+
+        var modifyPlatoModal = document.getElementById('modifyPlatoModal');
+        modifyPlatoModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var platoId = button.getAttribute('data-plato-id');
+            var modifyPlatoId = document.getElementById('modifyPlatoId');
+            modifyPlatoId.value = platoId;
+        });
+    });
 </script>
+
 {% endblock %}

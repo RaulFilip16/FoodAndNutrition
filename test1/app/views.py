@@ -24,47 +24,55 @@ def home_noacc(request):
     return render(request, 'menu.html')
 
 
+from datetime import datetime, timedelta
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+from .models import Dish
+from .forms import DishForm
+
 def seleccionar_dia(request):
-    if 'date' in request.GET:
-        current_date = datetime.strptime(request.GET['date'], '%Y-%m-%d').date()
+    date_param = request.GET.get('date')
+
+    if date_param:
+        try:
+            current_date = datetime.strptime(date_param, '%B %d, %Y').date()
+        except ValueError:
+            current_date = datetime.strptime(date_param, '%Y-%m-%d').date()
     else:
         current_date = datetime.now().date()
+
     previous_date = current_date - timedelta(days=1)
     next_date = current_date + timedelta(days=1)
     platos = Dish.objects.filter(date=current_date)
 
+    add_form = DishForm()
+    modify_form = DishForm()
+
     if request.method == 'POST':
-        form = DishForm(request.POST)
-        if form.is_valid():
-            form.instance.date = current_date
-            form.save()
-            return redirect(reverse('seleccionar_dia') + f'?date={current_date}')
-    else:
-        form = DishForm()
+        if 'plato_id' in request.POST:
+            plato_id = request.POST.get('plato_id')
+            plato = get_object_or_404(Dish, id=plato_id)
+
+            if 'delete' in request.POST:
+                plato.delete()
+                return redirect(reverse('seleccionar_dia') + f'?date={current_date.strftime("%B %d, %Y")}')
+            elif 'modify' in request.POST:
+                modify_form = DishForm(request.POST, instance=plato)
+                if modify_form.is_valid():
+                    modify_form.save()
+                    return redirect(reverse('seleccionar_dia') + f'?date={current_date.strftime("%B %d, %Y")}')
+        else:
+            add_form = DishForm(request.POST)
+            if add_form.is_valid():
+                add_form.instance.date = current_date
+                add_form.save()
+                return redirect(reverse('seleccionar_dia') + f'?date={current_date.strftime("%B %d, %Y")}')
 
     return render(request, 'seleccionar_dia.html', {
-        'form': form,
+        'add_form': add_form,
+        'modify_form': modify_form,
         'current_date': current_date,
         'previous_date': previous_date,
         'next_date': next_date,
         'platos': platos,
     })
-def eliminar_plato(request, plato_id):
-    plato = get_object_or_404(Dish, id=plato_id)
-    if request.method == 'POST':
-        plato.delete()
-        return redirect(reverse('seleccionar_dia') + f'?date={plato.date}')
-    return render(request, 'eliminar_plato.html', {'plato': plato})
-
-
-def modificar_plato(request, plato_id):
-    plato = get_object_or_404(Dish, id=plato_id)
-    if request.method == 'POST':
-        form = DishForm(request.POST, instance=plato)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('seleccionar_dia') + f'?date={plato.date}')
-    else:
-        form = DishForm(instance=plato)
-
-    return render(request, 'modificar_plato.html', {'form': form, 'plato': plato})
