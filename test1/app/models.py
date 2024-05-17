@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.db import models
 
-
+   
 class Meal(models.Model):
     MEALS = [
         ('Desayuno', 'Desayuno'),
