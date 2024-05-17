@@ -1,0 +1,78 @@
+/* Estilos/* Estilos para los botones */
+.btn-primary, .btn-danger, .btn-success {
+    background-color: #00b894; /* Fondo verde para botones primarios, de peligro y de éxito */
+    color: #fff; /* Color del texto para botones */
+    border: none; /* Sin borde para botones */
+    border-radius: 30px; /* Borde redondeado para botones */
+    padding: 8px 16px; /* Espaciado interno para botones */
+    font-size: 14px; /* Tamaño de fuente para botones */
+    cursor: pointer; /* Cursor al pasar sobre botones */
+    outline: none; /* Eliminar contorno al hacer clic en botones */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.btn-primary:hover, .btn-danger:hover, .btn-success:hover {
+    background-color: #009688; /* Fondo más oscuro al pasar el ratón sobre botones */
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    margin-top: 30px; /* Margen superior para el contenedor principal */
+}
+
+/* Estilos para las tarjetas */
+.card {
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+    border: none; /* Sin borde para las tarjetas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para las tarjetas */
+    transition: all 0.3s ease; /* Transición suave para todos los cambios */
+}
+
+.card:hover {
+    transform: translateY(-3px); /* Desplazamiento hacia arriba al pasar el ratón sobre las tarjetas */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada al pasar el ratón sobre las tarjetas */
+}
+
+.card-header {
+    background-color: #00b894; /* Color de fondo para el encabezado de las tarjetas */
+    color: #fff; /* Color del texto para el encabezado de las tarjetas */
+    border-top-left-radius: 10px; /* Borde redondeado superior izquierdo para el encabezado de las tarjetas */
+    border-top-right-radius: 10px; /* Borde redondeado superior derecho para el encabezado de las tarjetas */
+}
+
+/* Estilos para los modales */
+.modal-content {
+    background-color: #fff; /* Color de fondo para el contenido de los modales */
+    border-radius: 15px; /* Borde redondeado para el contenido de los modales */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra para los modales */
+}
+
+.modal-header {
+    background-color: #00b894; /* Color de fondo para el encabezado de los modales */
+    color: #fff; /* Color del texto para el encabezado de los modales */
+    border-top-left-radius: 15px; /* Borde redondeado superior izquierdo para el encabezado de los modales */
+    border-top-right-radius: 15px; /* Borde redondeado superior derecho para el encabezado de los modales */
+}
+
+.modal-footer {
+    background-color: #fff; /* Color de fondo para el pie de página de los modales */
+    border-bottom-left-radius: 15px; /* Borde redondeado inferior izquierdo para el pie de página de los modales */
+    border-bottom-right-radius: 15px; /* Borde redondeado inferior derecho para el pie de página de los modales */
+}
+
+/* Estilos para animaciones */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite; /* Animación de pulsación infinita */
+}
