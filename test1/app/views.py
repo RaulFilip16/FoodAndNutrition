@@ -9,13 +9,6 @@ from .models import *
 from .forms import DishForm
 
 
-# Create your views here.
-
-# def get_students(request):
-#     students = Student.objects.all()
-#     student_values = list(students.values())
-#     return JsonResponse(student_values, safe=False)
-
 def home(request):  # cuan ya esta fet login o singup
     return render(request, 'home/home.html')
 

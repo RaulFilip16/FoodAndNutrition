@@ -1,57 +1,57 @@
-/* Estilos para el botón futurista de Star Wars */
+
 .btn-primary {
-    background-color: transparent; /* Fondo transparente para el botón */
-    color: #2ecc71; /* Color del texto para el botón (verde más intenso) */
-    border: 2px solid #2ecc71; /* Borde sólido (verde más intenso) */
-    border-radius: 30px; /* Borde redondeado para el botón */
-    padding: 12px 24px; /* Espaciado interno para el botón */
-    font-size: 16px; /* Tamaño de fuente para el botón */
-    cursor: pointer; /* Cursor al pasar sobre el botón */
-    outline: none; /* Eliminar contorno al hacer clic en el botón */
-    position: relative; /* Posición relativa para el botón */
-    overflow: hidden; /* Ocultar el desbordamiento */
-    transition: color 0.3s, border-color 0.3s; /* Transición suave para el color del texto y el borde */
+    background-color: transparent;
+    color: #2ecc71;
+    border: 2px solid #2ecc71;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, border-color 0.3s;
 }
 
 .btn-primary::before {
-    content: ''; /* Contenido vacío */
-    position: absolute; /* Posición absoluta para el elemento pseudo */
-    top: 50%; /* Alinear al centro verticalmente */
-    left: 50%; /* Alinear al centro horizontalmente */
-    width: 0; /* Ancho inicial */
-    height: 0; /* Altura inicial */
-    background-color: #2ecc71; /* Color de fondo para el elemento pseudo (verde más intenso) */
-    border-radius: 50%; /* Borde redondeado */
-    transition: width 0.4s ease, height 0.4s ease; /* Transición suave para el tamaño */
-    z-index: -1; /* Colocar detrás del botón */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
 }
 
 .btn-primary:hover::before {
-    width: 300%; /* Ancho expandido al pasar el ratón */
-    height: 300%; /* Altura expandida al pasar el ratón */
+    width: 300%;
+    height: 300%;
 }
 
 .btn-primary:hover {
-    color: #fff; /* Cambiar color del texto al pasar el ratón */
-    border-color: transparent; /* Ocultar borde al pasar el ratón */
+    color: #fff;
+    border-color: transparent;
 }
 
-/* Estilos para la animación */
+
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); /* Sombra inicial */
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
     }
     70% {
-        transform: scale(1.05); /* Escalar al 105% */
-        box-shadow: 0 0 0 20px rgba(46, 204, 113, 0); /* Sombra expandida */
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(46, 204, 113, 0);
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); /* Sombra final */
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
     }
 }
 
 .pulse {
-    animation: pulse 1.5s infinite; /* Animación de pulsación infinita */
+    animation: pulse 1.5s infinite;
 }
