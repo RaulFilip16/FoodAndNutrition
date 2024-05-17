@@ -5,11 +5,11 @@ from django.db import models
 
 class Meal(models.Model):
     MEALS = [
-        ('Esmorzar', 'Esmorzar'),
-        ('Dinar', 'Dinar'),
-        ('Berenar', 'Berenar'),
-        ('Sopar', 'Sopar'),
-        ('Altres', 'Altres')
+        ('Desayuno', 'Desayuno'),
+        ('Comida', 'Comida'),
+        ('Merienda', 'Merienda'),
+        ('Cena', 'Cena'),
+        ('Otros', 'Otros')
     ]
 
     name = models.CharField(max_length=20, choices=MEALS, unique=True)
