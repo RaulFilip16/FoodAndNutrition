@@ -13,8 +13,10 @@
         </div>
     </div>
     {% if user.is_authenticated %}
-        <div class="position-absolute bottom-0 start-0 p-3">
-            <a href="{% url 'seleccionar_dia' %}" class="btn btn-success">Consulta tus estadísticas</a>
+        <div class="container text-center mt-3">
+            <link rel="stylesheet" type="text/css" href="{% static 'home/home-styles.css' %}">
+            <a href="{% url 'seleccionar_dia' %}" class="btn btn-primary pulse">Consulta tus estadísticas</a>
+
         </div>
     {% endif %}
 
