@@ -1,40 +1,29 @@
+from datetime import datetime
+
 from django.db import models
 
-
-# Create your models here.
-
-    # al definir aquest metode nomes li diem a la classe students que tot aquells Objectes Student els veguem pel seu nom es a dir en comptes de Student Object -> Pol
-    def __str__(self):
-        return self.name
-
-
-class User(models.Model):
-    nombre = models.CharField(max_length=30)
-    email = models.EmailField()
-    password = models.CharField(max_length=30)
-    # age = models.IntegerField(null = True)
-
-
+   
 class Meal(models.Model):
-    MEALS = [('Esmorzar', 'Esmorzar'),
-             ('Dinar', 'Dinar'),
-             ('Berenar', 'Berenar'),
-             ('Sopar', 'Sopar'),
-             ('Altres', 'Altres')]
+    MEALS = [
+        ('Desayuno', 'Desayuno'),
+        ('Comida', 'Comida'),
+        ('Merienda', 'Merienda'),
+        ('Cena', 'Cena'),
+        ('Otros', 'Otros')
+    ]
 
     name = models.CharField(max_length=20, choices=MEALS, unique=True)
-    time = models.TimeField()
-
 
     def __str__(self):
-        return f"{self.name} | {self.time}"
+        return self.name
 
 
 class Dish(models.Model):
     name = models.CharField(max_length=30)
     ingredients = models.ForeignKey('Ingredients', null=True, on_delete=models.CASCADE)
     meal = models.ForeignKey(Meal, null=True, on_delete=models.CASCADE)
-
+    date = models.DateField(default=datetime.now)
+    grams = models.IntegerField(default=100)
     def __str__(self):
         return self.name
 
@@ -72,3 +61,4 @@ class Nutrient(models.Model):
 
     def __str__(self) -> str:
         return f"{self.calories} kcal | PROT: {self.protein} gr | CARB: {self.carbos} gr | GRAS: {self.grasa} gr | GRASsat: {self.grasaSAT} gr"
+

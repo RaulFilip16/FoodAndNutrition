@@ -1,0 +1,57 @@
+
+.btn-primary {
+    background-color: transparent;
+    color: #2ecc71;
+    border: 2px solid #2ecc71;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+}
+
+.btn-primary:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    border-color: transparent;
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(46, 204, 113, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}

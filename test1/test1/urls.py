@@ -21,12 +21,13 @@ from django.contrib.auth import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # aixo serveix per a les urls, definides a cada app corresponent puguin ser executades, i tenen el path en blanc per a no tenir que escriure la URL sencer nomApp/nomMetode app/students accounts/login
-    path('app/', include('app.urls')),
-    path('accounts/', include('accounts.urls'))
 
-    # path('accounts/login/', views.LoginView.as_view(), name='login'),
-    # path('accounts/logout/', views.LogoutView.as_view(), name='logout'),
+    path('', include('app.urls')),
+    path('admin/', admin.site.urls),
+    path('app/', include('app.urls')),
+    path('accounts/', include('accounts.urls')),
+
+
+
 
 ]

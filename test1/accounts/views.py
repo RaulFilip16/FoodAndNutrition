@@ -63,3 +63,4 @@ def logIn(request):
 def logOut(request):
     logout(request)
     return redirect('autentication')
+
