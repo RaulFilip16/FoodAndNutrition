@@ -3,21 +3,20 @@
 
 {% block footer %}
 
-    <div class="container-fluid p-0 position-relative">
-        <img src="{% static 'assets/home.jpg' %}" class="img-fluid w-100" alt="Background Image"
-             style="height: 60vh; object-fit: cover;">
-        <div class="position-absolute bottom-0 start-0 p-3 text-white bg-dark" style="opacity: 0.9;">
-            <p class="h1">En Verde Bendito queremos que</p>
-            <p class="h1">contar calorías no sea un problema</p>
-            <p class="h1">del día a día</p>
-        </div>
+<div class="container-fluid p-0 position-relative" vocab="http://schema.org/" typeof="Organization">
+    <img src="{% static 'assets/home.jpg' %}" class="img-fluid w-100" alt="Background Image"
+         style="height: 60vh; object-fit: cover;">
+    <div class="position-absolute bottom-0 start-0 p-3 text-white bg-dark" style="opacity: 0.9;">
+        <p class="h1" property="name">En Verde Bendito</p>
+        <p class="h1" property="slogan">queremos que contar calorías no sea un problema del día a día</p>
     </div>
-    {% if user.is_authenticated %}
-        <div class="container text-center mt-3">
-            <a href="{% url 'seleccionar_dia' %}" class="btn btn-primary pulse">Consulta tus estadísticas</a>
-
-        </div>
-    {% endif %}
+</div>
+{% if user.is_authenticated %}
+    <div class="container text-center mt-3">
+        <a href="{% url 'seleccionar_dia' %}" class="btn btn-primary pulse" property="url">Consulta tus estadísticas</a>
+    </div>
+{% endif %}
 
 {% endblock %}
+
 
