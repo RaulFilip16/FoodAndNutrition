@@ -3,21 +3,18 @@
 {% block title %} Contacto {% endblock %}
 {% block footer %}
 
-
-    <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
-    <div class="container" style="padding-top: 50px;">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">About Us</h2>
-                        <p class="card-text">Verde Bendito surge de la idea de 4 jovenes ambiciosos licienciados en
-                            Nutrición con ganas de mostrar a la gente los macronutrientes de los alimenots que se consumen
-                            en el día a día.</p>
-                    </div>
+<body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
+<div class="container" style="padding-top: 50px;" vocab="http://schema.org/" typeof="Organization">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">About Us</h2>
+                    <p class="card-text" property="description">Verde Bendito surge de la idea de 4 jóvenes ambiciosos licenciados en Nutrición con ganas de mostrar a la gente los macronutrientes de los alimentos que se consumen en el día a día.</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 {% endblock %}
