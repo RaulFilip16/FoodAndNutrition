@@ -1,16 +1,14 @@
+<!DOCTYPE html>
+<html lang="es" vocab="https://schema.org/">
 {% extends 'base.html' %}
 {% load static %}
 {% block footer %}
     <head>
-
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="{% static 'seleccionar/seleccionar_dia.css' %}" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body vocab="https://schema.org/"
-          style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
+    <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -27,49 +25,51 @@
                         </div>
 
                         <h3 class="mb-3">Platos o alimentos del el día {{ current_date }}</h3>
-                        <ul class="list-group" typeof="Dishes">
+                        <ul class="list-group" typeof="Recipe">
                             {% for plato in platos %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center"
-                                    typeof="MenuDish">
-                                    <span property="name">{{ plato.name }}</span>
-                                    <small property="meal" class="text-muted">{{ plato.meal }}</small>
-                                    <small property="grams" class="text-muted">{{ plato.grams }}g</small>
-                                    <!--
-                                    <span property="calories">Calorías: ${energy.toFixed(2)} kcal</span>
-                                    <span property="carbohydrateContent">Carbohidratos: ${carbs.toFixed(2)} g</span>
-                                    <span property="fatContent">Grasas: ${fat.toFixed(2)} g</span>
-                                    <span property="proteinContent">Proteínas: ${protein.toFixed(2)} g</span>
+                                    typeof="MenuItem" property="Dish">
+                                    <small property="name" typeof="NutritionInformation">{{ plato.name }}</small>
+                                    <small property="meal" class="text-muted"
+                                           typeof="NutritionInformation">{{ plato.meal }}</small>
+                                    <small property="grams" class="text-muted"
+                                           typeof="NutritionInformation">{{ plato.grams }}g</small>
+
+                                    <span property="calories"
+                                          typeof="NutritionInformation">${energy.toFixed(2)} kcal</span>
+                                    <span property="carbohydrateContent" typeof="NutritionInformation">${carbs.toFixed(2)} g</span>
+                                    <span property="fatContent" typeof="NutritionInformation">${fat.toFixed(2)} g</span>
+                                    <span property="proteinContent" typeof="NutritionInformation">${protein.toFixed(2)} g</span>
+
+
                                     <div class="btn-group" role="group" aria-label="Actions">
-                                    -->
-                                    <button class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deletePlatoModal" data-plato-id="{{ plato.id }}"
-                                            data-plato-name="{{ plato.name }}">Eliminar
-                                    </button>
-                                    <button class="btn btn-primary" style="background-color: #036243;"
-                                            data-bs-toggle="modal" data-bs-target="#modifyPlatoModal"
-                                            data-plato-id="{{ plato.id }}" data-plato-name="{{ plato.name }}">
-                                        Modificar
-                                    </button>
-                                    <button class="btn btn-primary" style="background-color: #036243;"
-                                            data-bs-toggle="modal" data-bs-target="#macrosModal"
-                                            onclick="getMacros('{{ plato.name }}', '{{ plato.grams }}')">
-                                        Macronutrientes
-                                    </button>
-                                </ul>
-                                </div>
+                                        <button class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#deletePlatoModal" data-plato-id="{{ plato.id }}"
+                                                data-plato-name="{{ plato.name }}">Eliminar
+                                        </button>
+                                        <button class="btn btn-primary" style="background-color: #036243;"
+                                                data-bs-toggle="modal" data-bs-target="#modifyPlatoModal"
+                                                data-plato-id="{{ plato.id }}" data-plato-name="{{ plato.name }}">
+                                            Modificar
+                                        </button>
+                                        <button class="btn btn-primary" style="background-color: #036243;"
+                                                data-bs-toggle="modal" data-bs-target="#macrosModal"
+                                                onclick="getMacros('{{ plato.name }}', '{{ plato.grams }}')">
+                                            Macronutrientes
+                                        </button>
+                                    </div>
                                 </li>
                                 {% empty %}
                                 <li class="list-group-item">No hay platos o alimentos guardados para este día.</li>
                             {% endfor %}
-
-                    </ul>
-                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addPlatoModal"
-                            style="background-color: #036243;">Añadir
-                    </button>
+                        </ul>
+                        <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addPlatoModal"
+                                style="background-color: #036243;">Añadir
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </body>
 
     <!-- Modal para agregar plato -->
@@ -187,6 +187,10 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
