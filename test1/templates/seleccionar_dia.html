@@ -55,11 +55,13 @@
                                             onclick="getMacros('{{ plato.name }}', '{{ plato.grams }}')">
                                         Macronutrientes
                                     </button>
+                                </ul>
                                 </div>
                                 </li>
                                 {% empty %}
                                 <li class="list-group-item">No hay platos o alimentos guardados para este día.</li>
                             {% endfor %}
+
                     </ul>
                     <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addPlatoModal"
                             style="background-color: #036243;">Añadir
@@ -68,7 +70,7 @@
             </div>
         </div>
     </div>
-    </div>
+    </body>
 
     <!-- Modal para agregar plato -->
     <div class="modal fade" id="addPlatoModal" tabindex="-1" aria-labelledby="addPlatoModalLabel" aria-hidden="true">
