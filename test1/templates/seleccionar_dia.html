@@ -9,57 +9,66 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
 
-    <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
+    <body vocab="https://schema.org/"
+          style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Calendario</div>
-                    <div class="card-body">
+                    <div class="card-body" property="Calendar" typeof="Date">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <a href="?date={{ previous_date|date:'Y-m-d' }}" class="btn btn-primary"
                                style="background-color: #036243;">&lt; Anterior</a>
-                            <h2 style="text-decoration: underline; font-weight: bold;">{{ current_date }}</h2>
+                            <h2 style="text-decoration: underline; font-weight: bold;"
+                                property="CurrentMealsDate">{{ current_date }}</h2>
                             <a href="?date={{ next_date|date:'Y-m-d' }}" class="btn btn-primary"
                                style="background-color: #036243;">Siguiente &gt;</a>
                         </div>
 
                         <h3 class="mb-3">Platos o alimentos del el día {{ current_date }}</h3>
-                        <ul class="list-group">
+                        <ul class="list-group" typeof="Dishes">
                             {% for plato in platos %}
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    {{ plato.name }}
-                                    <small class="text-muted">{{ plato.meal }}</small>
-                                    <small class="text-muted">{{ plato.grams }}g</small>
+                                <li class="list-group-item d-flex justify-content-between align-items-center"
+                                    typeof="MenuDish">
+                                    <span property="name">{{ plato.name }}</span>
+                                    <small property="meal" class="text-muted">{{ plato.meal }}</small>
+                                    <small property="grams" class="text-muted">{{ plato.grams }}g</small>
+                                    <!--
+                                    <span property="calories">Calorías: ${energy.toFixed(2)} kcal</span>
+                                    <span property="carbohydrateContent">Carbohidratos: ${carbs.toFixed(2)} g</span>
+                                    <span property="fatContent">Grasas: ${fat.toFixed(2)} g</span>
+                                    <span property="proteinContent">Proteínas: ${protein.toFixed(2)} g</span>
                                     <div class="btn-group" role="group" aria-label="Actions">
-                                        <button class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deletePlatoModal" data-plato-id="{{ plato.id }}"
-                                                data-plato-name="{{ plato.name }}">Eliminar
-                                        </button>
-                                        <button class="btn btn-primary" style="background-color: #036243;"
-                                                data-bs-toggle="modal" data-bs-target="#modifyPlatoModal"
-                                                data-plato-id="{{ plato.id }}" data-plato-name="{{ plato.name }}">
-                                            Modificar
-                                        </button>
-                                        <button class="btn btn-primary" style="background-color: #036243;"
-                                                data-bs-toggle="modal" data-bs-target="#macrosModal"
-                                                onclick="getMacros('{{ plato.name }}', '{{ plato.grams }}')">Macronutrientes
-                                        </button>
-                                    </div>
+                                    -->
+                                    <button class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#deletePlatoModal" data-plato-id="{{ plato.id }}"
+                                            data-plato-name="{{ plato.name }}">Eliminar
+                                    </button>
+                                    <button class="btn btn-primary" style="background-color: #036243;"
+                                            data-bs-toggle="modal" data-bs-target="#modifyPlatoModal"
+                                            data-plato-id="{{ plato.id }}" data-plato-name="{{ plato.name }}">
+                                        Modificar
+                                    </button>
+                                    <button class="btn btn-primary" style="background-color: #036243;"
+                                            data-bs-toggle="modal" data-bs-target="#macrosModal"
+                                            onclick="getMacros('{{ plato.name }}', '{{ plato.grams }}')">
+                                        Macronutrientes
+                                    </button>
+                                </div>
                                 </li>
                                 {% empty %}
                                 <li class="list-group-item">No hay platos o alimentos guardados para este día.</li>
                             {% endfor %}
-                        </ul>
-                        <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addPlatoModal"
-                                style="background-color: #036243;">Añadir
-                        </button>
-                    </div>
+                    </ul>
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addPlatoModal"
+                            style="background-color: #036243;">Añadir
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
+    </div>
 
     <!-- Modal para agregar plato -->
     <div class="modal fade" id="addPlatoModal" tabindex="-1" aria-labelledby="addPlatoModalLabel" aria-hidden="true">
@@ -201,55 +210,58 @@
         });
     </script>
 
-   <script>
-    function getMacros(nombre_alimento, gramos) {
-        const url = "https://api.edamam.com/api/food-database/parser";
-        const app_id = "ca747d07";
-        const app_key = "722fabaee32b8118f7b1cb2e32b137cf";
-        const params = {
-            "app_id": app_id,
-            "app_key": app_key,
-            "ingr": nombre_alimento
-        };
+    <script>
+        function getMacros(nombre_alimento, gramos) {
+            const url = "https://api.edamam.com/api/food-database/parser";
+            const app_id = "ca747d07";
+            const app_key = "722fabaee32b8118f7b1cb2e32b137cf";
+            const params = {
+                "app_id": app_id,
+                "app_key": app_key,
+                "ingr": nombre_alimento
+            };
 
-        // Realizar la solicitud a la API de Edamam
-        fetch(url + "?" + new URLSearchParams(params))
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('No se pudo completar la solicitud');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (!data.hints || data.hints.length === 0) {
+            // Realizar la solicitud a la API de Edamam
+            fetch(url + "?" + new URLSearchParams(params))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo completar la solicitud');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.hints || data.hints.length === 0) {
 
-                    document.getElementById('macrosContent').innerHTML = "<p>Alimento no registrado.</p>";
-                } else {
-                    const nutrients = data.hints[0].food.nutrients;
+                        document.getElementById('macrosContent').innerHTML = "<p>Alimento no registrado.</p>";
+                    } else {
+                        const nutrients = data.hints[0].food.nutrients;
 
-                    // Calcular los valores nutricionales según los gramos especificados
-                    const factor = gramos / 100;
-                    const energy = nutrients.ENERC_KCAL ? nutrients.ENERC_KCAL * factor : 0;
-                    const carbs = nutrients.CHOCDF ? nutrients.CHOCDF * factor : 0;
-                    const protein = nutrients.PROCNT ? nutrients.PROCNT * factor : 0;
-                    const fat = nutrients.FAT ? nutrients.FAT * factor : 0;
-
-
-                    const macrosContent = `
-                    <p>Calorías: ${energy.toFixed(2)} kcal</p>
-                    <p>Carbohidratos: ${carbs.toFixed(2)} g</p>
-                    <p>Grasas: ${fat.toFixed(2)} g</p>
-                    <p>Proteínas: ${protein.toFixed(2)} g</p>
-                `;
-                    document.getElementById('macrosContent').innerHTML = macrosContent;
-                }
+                        // Calcular los valores nutricionales según los gramos especificados
+                        const factor = gramos / 100;
+                        const energy = nutrients.ENERC_KCAL ? nutrients.ENERC_KCAL * factor : 0;
+                        const carbs = nutrients.CHOCDF ? nutrients.CHOCDF * factor : 0;
+                        const protein = nutrients.PROCNT ? nutrients.PROCNT * factor : 0;
+                        const fat = nutrients.FAT ? nutrients.FAT * factor : 0;
 
 
-                const macrosModal = new bootstrap.Modal(document.getElementById('macrosModal'));
-                macrosModal.show();
-            })
-            .catch(error => console.error('Error al obtener los datos:', error));
-    }
-</script>
+                        const macrosContent = `
+                            <div typeof="NutritionInformation">
+                                <p property="calories">Calorías: ${energy.toFixed(2)} kcal</p>
+                                <p property="carbohydrateContent">Carbohidratos: ${carbs.toFixed(2)} g</p>
+                                <p property="fatContent">Grasas: ${fat.toFixed(2)} g</p>
+                                <p property="proteinContent">Proteínas: ${protein.toFixed(2)} g</p>
+                            </div>
+                        `;
+
+                        document.getElementById('macrosContent').innerHTML = macrosContent;
+                    }
+
+
+                    const macrosModal = new bootstrap.Modal(document.getElementById('macrosModal'));
+                    macrosModal.show();
+                })
+                .catch(error => console.error('Error al obtener los datos:', error));
+        }
+    </script>
 
 {% endblock %}
