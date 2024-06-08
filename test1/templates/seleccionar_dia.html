@@ -27,22 +27,23 @@
                         </div>
 
                         <h3 class="mb-3">Platos o alimentos del el día {{ current_date }}</h3>
-                        <ul class="list-group" typeof="Recipe">
+                        <ul class="list-group">
                             {% for plato in platos %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center"
-                                    typeof="MenuItem">
+                                    typeof="Recipe">
                                     <small property="name" class="text-muted"
                                            content="{{ plato.name }}">{{ plato.name }}</small>
+                                    <img property="image" src="https://via.placeholder.com/150" alt="Dish" style="display: none;">
                                     <small property="meal" class="text-muted"
                                            content="{{ plato.meal }}">{{ plato.meal }}</small>
                                     <small property="grams" class="text-muted"
                                            content="{{ plato.grams }} g">{{ plato.grams }} g</small>
-                                    <!--
+
                                     <span property="calories" content="{ plato.calories.toFixed(2) } g">Calorías: { plato.calories.toFixed(2) } kcal</span>
                                     <span property="carbohydrateContent" content="{ plato.carbs.toFixed(2) } g">Carbohidratos: { plato.carbs.toFixed(2) } g</span>
                                     <span property="fatContent" content="{ plato.fat.toFixed(2) } g">Grasas: { plato.fat.toFixed(2) } g</span>
                                     <span property="proteinContent" content="{ plato.protein.toFixed(2) } g">Proteínas: { plato.protein.toFixed(2) } g</span>
-                                    -->
+
                                     <div class="btn-group" role="group" aria-label="Actions">
                                         <button class="btn btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#deletePlatoModal" data-plato-id="{{ plato.id }}"
