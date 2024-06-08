@@ -1,6 +1,6 @@
-# 2nd deliverable :computer: 
+# 3rd deliverable :computer: 
 
-Projecte d'aplicació web per la pràctica 2 de l'assignatura projecte web.
+Projecte d'aplicació web per la pràctica 3 de l'assignatura projecte web.
 
 # Project Team ✒️
 
