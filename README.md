@@ -1,6 +1,6 @@
-# 1st deliverable :computer: 
+# 2nd deliverable :computer: 
 
-Projecte d'aplicació web per la pràctica 1 de l'assignatura projecte web.
+Projecte d'aplicació web per la pràctica 2 de l'assignatura projecte web.
 
 # Project Team ✒️
 
@@ -12,7 +12,8 @@ Projecte d'aplicació web per la pràctica 1 de l'assignatura projecte web.
 
 #Running instructions
 
-1.Execute docker-compose.yml 
+1.Checkout on the master branch and execute docker-compose.yml(in case that doesn't work use the command  python .\manage.py runserver
+
 
 
 2.Username : admin

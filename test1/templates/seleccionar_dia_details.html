@@ -1,16 +1,9 @@
+<!DOCTYPE html>
+<html lang="es" vocab="https://schema.org/">
 {% extends 'base.html' %}
 {% load static %}
 {% block footer %}
-    <head>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{% static 'seleccionar/seleccionar_dia.css' %}" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title></title>
-    </head>
-
-    <body vocab="https://schema.org/"
-          style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
+    <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -21,49 +14,60 @@
                             <a href="?date={{ previous_date|date:'Y-m-d' }}" class="btn btn-primary"
                                style="background-color: #036243;">&lt; Anterior</a>
                             <h2 style="text-decoration: underline; font-weight: bold;"
-                                property="CurrentMealsDate">{{ current_date }}</h2>
+                                property="CurrentMealsDate" content="07/06/2024">{{ current_date }}</h2>
                             <a href="?date={{ next_date|date:'Y-m-d' }}" class="btn btn-primary"
                                style="background-color: #036243;">Siguiente &gt;</a>
                         </div>
 
                         <h3 class="mb-3">Platos o alimentos del el día {{ current_date }}</h3>
                         <ul class="list-group" typeof="Recipe">
-                            {% for plato in platos %}
-                                <li class="list-group-item d-flex justify-content-between align-items-center"
-                                    typeof="MenuItem">
-                                    <small property="name" class="text-muted"
-                                           content="{{ plato.name }}">{{ plato.name }}</small>
-                                    <small property="meal" class="text-muted"
-                                           content="{{ plato.meal }}">{{ plato.meal }}</small>
-                                    <small property="grams" class="text-muted"
-                                           content="{{ plato.grams }} g">{{ plato.grams }} g</small>
-                                    <!--
-                                    <span property="calories" content="{ plato.calories.toFixed(2) } g">Calorías: { plato.calories.toFixed(2) } kcal</span>
-                                    <span property="carbohydrateContent" content="{ plato.carbs.toFixed(2) } g">Carbohidratos: { plato.carbs.toFixed(2) } g</span>
-                                    <span property="fatContent" content="{ plato.fat.toFixed(2) } g">Grasas: { plato.fat.toFixed(2) } g</span>
-                                    <span property="proteinContent" content="{ plato.protein.toFixed(2) } g">Proteínas: { plato.protein.toFixed(2) } g</span>
-                                    -->
-                                    <div class="btn-group" role="group" aria-label="Actions">
-                                        <button class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deletePlatoModal" data-plato-id="{{ plato.id }}"
-                                                data-plato-name="{{ plato.name }}">Eliminar
-                                        </button>
-                                        <button class="btn btn-primary" style="background-color: #036243;"
-                                                data-bs-toggle="modal" data-bs-target="#modifyPlatoModal"
-                                                data-plato-id="{{ plato.id }}" data-plato-name="{{ plato.name }}">
-                                            Modificar
-                                        </button>
-                                        <button class="btn btn-primary" style="background-color: #036243;"
-                                                data-bs-toggle="modal" data-bs-target="#macrosModal"
-                                                onclick="getMacros('{{ plato.name }}', '{{ plato.grams }}')">
-                                            Macronutrientes
-                                        </button>
-                                    </div>
-                                </li>
-                                {% empty %}
-                                <li class="list-group-item">No hay platos o alimentos guardados para este día.</li>
-                            {% endfor %}
+                            <div typeof="MenuItem">
+                                <small property="name"
+                                       content="Pollo a la plancha"></small>
+                                <small property="meal" class="text-muted"
+                                       content="Cena"></small>
+                                <small property="grams" class="text-muted"
+                                       content="100g"></small>
+                                <span property="calories" content="152 kcal"></span>
+                                <span property="carbohydrateContent" content="0g"></span>
+                                <span property="fatContent" content="1g"></span>
+                                <span property="proteinContent" content="7.2g"></span>
+                            </div>
+                            <div typeof="MenuItem">
+                                <small property="name" content="Ensalada de atún">Ensalada
+                                    de atún</small>
+                                <small property="meal" class="text-muted"
+                                       content="Almuerzo">Almuerzo</small>
+                                <small property="grams" class="text-muted" content="200g">200g</small>
+                                <span property="calories" content="250 kcal">Calorías: 250 kcal</span>
+                                <span property="carbohydrateContent" content="10g">Carbohidratos: 10g</span>
+                                <span property="fatContent" content="15g">Grasas: 15g</span>
+                                <span property="proteinContent" content="20g">Proteínas: 20g</span>
+                            </div>
+                            <div typeof="MenuItem">
+                                <small property="name" content="Batido de proteínas">Batido
+                                    de proteínas</small>
+                                <small property="meal" class="text-muted" content="Desayuno">Desayuno</small>
+                                <small property="grams" class="text-muted" content="300g">300g</small>
+                                <span property="calories" content="220 kcal">Calorías: 220 kcal</span>
+                                <span property="carbohydrateContent" content="20g">Carbohidratos: 20g</span>
+                                <span property="fatContent" content="2g">Grasas: 2g</span>
+                                <span property="proteinContent" content="30g">Proteínas: 30g</span>
+                            </div>
+                            <div typeof="MenuItem">
+                                <small property="name" content="Fruta mixta">Fruta
+                                    mixta</small>
+                                <small property="meal" class="text-muted" content="Merienda">Merienda</small> <small
+                                    property="grams" class="text-muted"
+                                    content="150g">150g</small>
+                                <span property="calories" content="80 kcal">Calorías: 80 kcal</span>
+                                <span property="carbohydrateContent" content="20g">Carbohidratos: 20g</span>
+                                <span property="fatContent"
+                                      content="0.5g">Grasas: 0.5g</span>
+                                <span property="proteinContent" content="1g">Proteínas: 1g</span>
+                            </div>
                         </ul>
+
                         <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addPlatoModal"
                                 style="background-color: #036243;">Añadir
                         </button>
@@ -71,7 +75,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </body>
 
     <!-- Modal para agregar plato -->
     <div class="modal fade" id="addPlatoModal" tabindex="-1" aria-labelledby="addPlatoModalLabel" aria-hidden="true">
@@ -188,7 +192,10 @@
             </div>
         </div>
     </div>
-    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
