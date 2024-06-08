@@ -3,25 +3,25 @@
 {% block title %} Contacto {% endblock %}
 {% block footer %}
 
-    <body style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
-    <header class="full-width">
-        <div class="container text-center">
-            <div class="d-inline-block bg-white p-1 mt-2">
-                <p class="h1 text-dark main-text-over-img mt-1">Contacto</p>
-            </div>
+<body vocab="http://schema.org/" typeof="Organization" style="background-image: url('{% static 'assets/alimentos.jpg' %}'); background-size: cover;">
+<header class="full-width">
+    <div class="container text-center">
+        <div class="d-inline-block bg-white p-1 mt-2">
+            <p class="h1 text-dark main-text-over-img mt-1" >Contacto</p>
         </div>
-    </header>
-    </body>
+    </div>
+</header>
+</body>
 
-    <div class="container-fluid py-4 full-width">
-        <div class="row full-height">
-            <div class="col-md-6">
-                <div class="card bg-light mb-4 full-height">
-                    <div class="card-header">
-                        <h2>Preguntas Frecuentes (FAQ)</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="accordion" id="accordionFAQ">
+<div class="container-fluid py-4 full-width">
+    <div class="row full-height">
+        <div class="col-md-6">
+            <div class="card bg-light mb-4 full-height">
+                <div class="card-header">
+                    <h2>Preguntas Frecuentes (FAQ)</h2>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="accordionFAQ">
                             <div class="card">
                                 <div class="card-header" id="headingOne">
                                     <h3 class="mb-0">
@@ -159,71 +159,70 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card bg-light mb-4 full-height">
-                    <div class="card-header">
-                        <h2>Ubicación</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item"
-                                    src=https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5966.332771652356!2d0.6216036759300964!3d41.608913571272566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a6e07273c3d6ef%3A0x250ae18af8fd555f!2sBiblioteca%20Jaume%20Porta.%20UdL!5e0!3m2!1ses!2ses!4v1715883438263!5m2!1ses!2ses"
-                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="col-12 container-fluid m0">
-        <div class="row">
-            <div class="card bg-light mb-0 p-0">
+        <div class="col-md-6">
+            <div class="card bg-light mb-4 full-height">
                 <div class="card-header">
-                    <h2>Información de Contacto</h2>
+                    <h2>Ubicación</h2>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <p><strong>Teléfono:</strong> +31 696 969 696</p>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <p><strong>Correo Electrónico:</strong> verdebendito@gmail.com</p>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <p><strong>Ubicación:</strong> Av. Del Parais 7</p>
-                        </div>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item"
+                                src=https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5966.332771652356!2d0.6216036759300964!3d41.608913571272566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a6e07273c3d6ef%3A0x250ae18af8fd555f!2sBiblioteca%20Jaume%20Porta.%20UdL!5e0!3m2!1ses!2ses!4v1715883438263!5m2!1ses!2ses"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div class="col-12 container-fluid m0">
+    <div class="row">
+        <div class="card bg-light mb-0 p-0">
+            <div class="card-header">
+                <h2>Información de Contacto</h2>
+            </div>
+            <div class="card-body" >
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <p><strong>Teléfono:</strong> <span property="telephone">+31 696 969 696</span></p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p><strong>Correo Electrónico:</strong> <span property="email">verdebendito@gmail.com</span></p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p><strong>Ubicación:</strong> <span property="address">Av. Del Parais 7</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script>
-        $(document).ready(function () {
-            $('.card').click(function () {
-                var $collapse = $(this).find('.collapse');
-                if ($collapse.hasClass('show')) {
-                    $collapse.collapse('hide');
-                } else {
-                    $('.collapse.show').collapse('hide');
-                    $collapse.collapse('show');
-                }
-            });
-            $('.card .card-body').click(function (event) {
-                event.stopPropagation();
-            });
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.card').click(function () {
+            var $collapse = $(this).find('.collapse');
+            if ($collapse.hasClass('show')) {
+                $collapse.collapse('hide');
+            } else {
+                $('.collapse.show').collapse('hide');
+                $collapse.collapse('show');
+            }
         });
-    </script>
+        $('.card .card-body').click(function (event) {
+            event.stopPropagation();
+        });
+    });
+</script>
 
 {% endblock %}
-
